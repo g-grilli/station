@@ -4,7 +4,8 @@ var pgp = require('pg-promise')({
  promiseLib: Promise
 });
 var db = pgp({
- database: 'zipcode'
+ database: 'zipcode',
+ user: 'postgres'
 });
  
 var apicache = require('apicache');
