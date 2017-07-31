@@ -1,0 +1,26 @@
+{
+  "name": "station",
+  "version": "1.0.0",
+  "description": "Local weather app on Raspberry PI",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/g-grilli/station.git"
+  },
+  "author": "Gene Grilli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/g-grilli/station/issues"
+  },
+  "homepage": "https://github.com/g-grilli/station#readme",
+  "dependencies": {
+    "apicache": "^0.8.7",
+    "axios": "^0.16.2",
+    "express": "^4.15.3",
+    "hbs": "^4.0.1",
+    "pg-promise": "^6.3.6"
+  }
+}
