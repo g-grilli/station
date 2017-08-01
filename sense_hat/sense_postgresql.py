@@ -15,7 +15,7 @@ TEMP_P=True
 HUMIDITY=True
 PRESSURE=True
 MAG=True
-DELAY=1800
+DELAY=30
 
 def log_data(tempH, tempP, hum, press, mag, dt):
     print(tempH, tempP, hum, press, mag, dt)
@@ -51,7 +51,6 @@ def get_sense_data():
     
 def timed_log():
     while True:
-      datalist = get_sense_data()
       log_data(*datalist)
       sleep(DELAY)
 
@@ -59,9 +58,10 @@ def timed_log():
 sense=SenseHat()
 while True:
     if DELAY > 0:
-        Thread(target = timed_log).start()
+      datalist = get_sense_data()
+      Thread(target = timed_log).start()
     
     if DELAY == 0:
-        datalist = get_sense_data()
-        log_data(*datalist)
+      datalist = get_sense_data()
+      log_data(*datalist)
     

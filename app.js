@@ -25,7 +25,10 @@ app.get('/', function (request, response) {
 app.get('/local', function (request, response) {
  response.render('local.hbs', {});
 });
- 
+
+app.get('/raspberry', function (request, response) {
+ response.render('raspberry.hbs', {});
+}); 
  
 app.get('/api', cache('60 minutes'), function (request, response, next) {
  var zip_code = request.query.zip_code;
@@ -55,7 +58,6 @@ app.get('/local', function (request, response, next) {
   .then(function(resultsArray) {
      console.log('results', resultsArray);
      local_data = resultsArray[0];
-     response.json({dl: local_data})
   })
      .catch(next);
  });
