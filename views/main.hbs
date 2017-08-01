@@ -1,4 +1,4 @@
-<!doctype html>
+e<!doctype html>
 <html>
   <head>
     <title>Have a Nice Day Weather</title>
@@ -42,44 +42,12 @@
     <div class ="container-fluid bg-1 text-center">
       <h1 id="location"></h1>
       <h2 id="temp"></h2><p>Degrees Farenheit</p>
-      <h2 id="icon"></h2><p>Is what it looks like!</p>
-      <h2 id="humid"></h2><p>Humidity</p>
+      <h2 id="summary"></h2><p>Is what it looks like!</p>
+      <h2 id="icon"></h2>
+      <h2 id="feel"></h2>Is what it feels like.
+      <h2 id="humid"></h2><p>Humidity Percentage</p>
       <h2 id="wind"></h2><p>Wind Speed in MPH</p>
       <h2 id="uv"></h2><p>uv Index</p>
-    </div>
-    <div class="container-fluid footer bg-2">
-      <figure class="icons">
-        <canvas id="clear-day" width="64" height="64">
-        </canvas>
-
-        <canvas id="clear-night" width="64" height="64">
-        </canvas>
-
-        <canvas id="partly-cloudy-day" width="64" height="64">
-        </canvas>
-
-        <canvas id="partly-cloudy-night" width="64" height="64">
-        </canvas>
-
-        <canvas id="cloudy" width="64" height="64">
-        </canvas>
-
-        <canvas id="rain" width="64" height="64">
-        </canvas>
-
-        <canvas id="sleet" width="64" height="64">
-        </canvas>
-
-        <canvas id="snow" width="64" height="64">
-        </canvas>
-
-        <canvas id="wind" width="64" height="64">
-        </canvas>
-
-      <canvas id="fog" width="64" height="64">
-        </canvas>
-      </figure>
-      
     </div>
 
     <!--FOOTER-->
@@ -127,8 +95,12 @@
          console.log(response.data);
          var t = document.getElementById('temp');
          t.innerHTML = response.data.ds.currently.temperature;
+         var s = document.getElementById('summary');
+         s.innerHTML = response.data.ds.currently.summary;
          var i = document.getElementById('icon');
          i.innerHTML = response.data.ds.currently.icon;
+         var f = document.getElementById('feel');
+         f.innerHTML = response.data.ds.currently.apparentTemperature;
          var h = document.getElementById('humid');
          h.innerHTML = response.data.ds.currently.humidity;
          var s = document.getElementById('wind');
@@ -141,6 +113,9 @@
        });
         return false;
       }
+    </script>
+    <script>
+      
     </script>
     
 
