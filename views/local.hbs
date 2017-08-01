@@ -32,40 +32,26 @@
     </div>
   </nav>
   <div class ="container-fluid bg-1 text-center">
-      <h1>Klien, Texas</h1>
-      <h2>{{temp_h}}</h2><p>Temperature Humidity</p>
-      <h2>{{temp_p}}</h2><p>Temperature Pressure</p>
-      <h2 {{humidity}}></h2><p>Humidity Percentage</p>
-      <h2 {{pressure}}></h2><p>Barmetric Pressure</p>
-      <h2 id="datetime"></h2><p>Last Reading</p>
+      <h1>PI WEATHER STATION</h1>
+      <ul>
+        {{#each results}} 
+        <li>
+          <h2>Klien, Texas</h2><p>Weather Station Home</p>
+          <h2>{{temp_h}}</h2><p>Temperature Humidity</p>
+          <h2>{{temp_p}}</h2><p>Temperature Pressure</p>
+          <h2>{{humidity}}</h2><p>Humidity Percentage</p>
+          <h2>{{pressure}}</h2><p>Barometric Pressure</p>
+          <h2>{{datetime}}</h2><p>Last Reading</p>
+        </li>
+        {{/each}}
+      </ul>
   </div>
   <div>
-    <form>
+    <form method="GET" action="/local">
+      <label>Record Pull</label>
+      <input name='records', value='1'>
       <button type='submit' class="btn btn-default btn-sm">Get Latest</button>
-      <button type='submit' class="btn btn-default btn-sm">Get Last 5</button>
-      <button type='submit' class="btn btn-default btn-sm">Get Last 10</button>
-      <button type='submit' class="btn btn-default btn-sm">Get Custom</button>
     </form>
   </div>
-    
-  <script>
-      function  lookup () {
-        var sense_hat = document.getElementById('sense_hat').value;
-        axios.get('/local_current', {params: {sense_hat: sense_hat}})
-       .then(function (response) {
-         console.log(response.data);
-         var th = document.getElementById('temp_h');
-         th.innerHTML = response.data.dl.temp_h;
-         var tp = document.getElementById('temp_p');
-         tp.innerHTML = response.data.dl.temp_p;
-         var h = document.getElementById('humid');
-         h.innerHTML = response.data.dl.humid;
-         var h = document.getElementById('datetime');
-         d.innerHTML = response.data.dl.datetime;
-         console.log(response.data.dl);
-       });
-        return false;
-      }
-    </script>
   </body>
 </html>  

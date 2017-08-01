@@ -22,9 +22,9 @@ app.get('/', function (request, response) {
  response.render('main.hbs', {});
 });
 
-app.get('/local', function (request, response) {
- response.render('local.hbs', {});
-});
+// app.get('/local', function (request, response) {
+// response.render('local.hbs', {});
+// });
 
 app.get('/raspberry', function (request, response) {
  response.render('raspberry.hbs', {});
@@ -49,15 +49,14 @@ app.get('/api', cache('60 minutes'), function (request, response, next) {
  });
  
 app.get('/local', function (request, response, next) {
- var sense_hat = request.query.sense_hat;
- console.log('Generating new response', sense_hat);
- var local_data;
+ var records = request.query.records;
+ console.log(records);
  db.any(`
   SELECT temp_h, temp_p, humidity, pressure, datetime FROM sensor_data
-  ORDER BY datetime DESC LIMIT 1`, sense_hat)
-  .then(function(resultsArray) {
-     console.log('results', resultsArray);
-     local_data = resultsArray[0];
+  ORDER BY datetime DESC LIMIT 1`, records)
+  .then(function(results) {
+    response.render('local.hbs', {results: results})
+     
   })
      .catch(next);
  });
