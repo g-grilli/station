@@ -21,6 +21,10 @@ app.use('/axios', express.static('node_modules/axios/dist'));
 app.get('/', function (request, response) {
  response.render('main.hbs', {});
 });
+
+app.get('/local', function (request, response) {
+ response.render('local.hbs', {});
+});
  
  
 app.get('/api', cache('60 minutes'), function (request, response, next) {
@@ -38,6 +42,21 @@ app.get('/api', cache('60 minutes'), function (request, response, next) {
      .then(function (darksky) {
      response.json({db: dbdata, ds: darksky.data});
      })
+     .catch(next);
+ });
+ 
+app.get('/local', function (request, response, next) {
+ var sense_hat = request.query.sense_hat;
+ console.log('Generating new response', sense_hat);
+ var local_data;
+ db.any(`
+  SELECT temp_h, temp_p, humidity, pressure, datetime FROM sensor_data
+  ORDER BY datetime DESC LIMIT 1`, sense_hat)
+  .then(function(resultsArray) {
+     console.log('results', resultsArray);
+     local_data = resultsArray[0];
+     response.json({dl: local_data})
+  })
      .catch(next);
  });
  

@@ -10,7 +10,7 @@
     
     <script src="/axios/axios.js"></script>
   </head>
-  <body>
+  <body onload='lookup()'>
     <!-- NAVIGATION -->
    <nav class="navbar navbar-default">
     <div class="container">
@@ -26,7 +26,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Weather</a></li>
           <li><a href="#">Raspberry PI</a></li>
-          <li><a href="#">PI Weather</a></li>
+          <li><a href="/local">PI Weather</a></li>
         </ul>
       </div>
     </div>
@@ -141,10 +141,8 @@
        });
         return false;
       }
-      
-      
     </script>
-
+    
 
 
   </body>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Have a Nice Day Weather</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    
+    <script src="/axios/axios.js"></script>
+  </head>
+  <body onload='lookup()'>
+    <!-- NAVIGATION -->
+   <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">HAVE A NICE DAY</a>
+      </div>
+      <div class="collapse navbar-collapse" id ="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Weather</a></li>
+          <li><a href="#">Raspberry PI</a></li>
+          <li><a href="local">PI Weather</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class ="container-fluid bg-1 text-center">
+      <h1 id="location"></h1>
+      <h2 id="temp_h"></h2><p>Humidity Temperature</p>
+      <h2 id="temp_p"></h2><p>Humidity Temperature</p>
+      <h2 id="humid"></h2><p>Is what it looks like!</p>
+      <h2 id="datetime"></h2><p>Humidity</p>
+    </div>
+    
+  <script>
+      function  lookup () {
+        var sense_hat = document.getElementById('sense_hat').value;
+        axios.get('/local_current', {params: {sense_hat: sense_hat}})
+       .then(function (response) {
+         console.log(response.data);
+         var th = document.getElementById('temp_h');
+         th.innerHTML = response.data.dl.temp_h;
+         var tp = document.getElementById('temp_p');
+         tp.innerHTML = response.data.dl.temp_p;
+         var h = document.getElementById('humid');
+         h.innerHTML = response.data.dl.humid;
+         var h = document.getElementById('datetime');
+         d.innerHTML = response.data.dl.datetime;
+         console.log(response.data.dl);
+       });
+        return false;
+      }
+    </script>
