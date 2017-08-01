@@ -1,4 +1,4 @@
-e<!doctype html>
+<!doctype html>
 <html>
   <head>
     <title>Have a Nice Day Weather</title>
@@ -7,7 +7,6 @@ e<!doctype html>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/static/style.css">
-    
     <script src="/axios/axios.js"></script>
   </head>
   <body onload='lookup()'>
@@ -42,8 +41,10 @@ e<!doctype html>
     <div class ="container-fluid bg-1 text-center">
       <h1 id="location"></h1>
       <h2 id="temp"></h2><p>Degrees Farenheit</p>
+      <figure class="icons">
+        <canvas id="icon" width="64" height="64"></canvas>
+      </figure>
       <h2 id="summary"></h2><p>Is what it looks like!</p>
-      <h2 id="icon"></h2>
       <h2 id="feel"></h2>Is what it feels like.
       <h2 id="humid"></h2><p>Humidity Percentage</p>
       <h2 id="wind"></h2><p>Wind Speed in MPH</p>
@@ -71,22 +72,11 @@ e<!doctype html>
           </ul>
         </div>
     </div>
+    <figure>
+      <canvas id="clear-day" width="64" height="64">
+      </canvas>
+    </figure>
     <script src='static/skycons.js'></script>
-    <script>
-      var icons = new Skycons(),
-          list  = [
-            "clear-day", "clear-night", "partly-cloudy-day",
-            "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
-            "fog"
-          ],
-          i;
-
-      for(i = list.length; i--; )
-        icons.set(list[i], list[i]);
-
-      icons.play();
-    </script>
-    
     <script>
       function  lookup () {
         var zip_code = document.getElementById('zip_code').value;
@@ -94,31 +84,31 @@ e<!doctype html>
        .then(function (response) {
          console.log(response.data);
          var t = document.getElementById('temp');
-         t.innerHTML = response.data.ds.currently.temperature;
+         t.innerHTML = round(response.data.ds.currently.temperature, 1);
          var s = document.getElementById('summary');
          s.innerHTML = response.data.ds.currently.summary;
-         var i = document.getElementById('icon');
-         i.innerHTML = response.data.ds.currently.icon;
          var f = document.getElementById('feel');
-         f.innerHTML = response.data.ds.currently.apparentTemperature;
+         f.innerHTML = round(response.data.ds.currently.apparentTemperature, 1);
          var h = document.getElementById('humid');
-         h.innerHTML = response.data.ds.currently.humidity;
+         h.innerHTML = response.data.ds.currently.humidity * 100;
          var s = document.getElementById('wind');
-         s.innerHTML = response.data.ds.currently.windSpeed;
+         s.innerHTML = round(response.data.ds.currently.windSpeed, 1);
          var u = document.getElementById('uv');
          u.innerHTML = response.data.ds.currently.uvIndex;
          var l = document.getElementById('location');
          l.innerHTML = response.data.db.location_text;
+         var i = document.getElementById('icons');
+         i.innerHTML = response.data.db.location_text;
          console.log(response.data.db);
        });
         return false;
       }
     </script>
     <script>
-      
+     function round(value, precision) {
+      var multiplier = Math.pow(10, precision || 0);
+      return Math.round(value * multiplier) / multiplier;
+      }
     </script>
-    
-
-
   </body>
 </html>
