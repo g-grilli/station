@@ -1,16 +1,26 @@
 from sense_hat import SenseHat
 sense = SenseHat()
 
+def far(temp):
+  return round(((temp / 5 * 9) - 23) + 32, 1)
+  
+def bar(pressure):
+  return round((pressure * 0.02952998751),1)
+
+def hummer(humidity):
+  return round(humidity, 1)
+
+
 while True:
-    t = sense.get_temperature()
+    t = sense.get_temperature_from_pressure()
     p = sense.get_pressure()
     h = sense.get_humidity()
 
-    t = round(t, 1)
-    p = round(p, 1)
-    h = round(h, 1)
+    t = far(t)
+    p = bar(p)
+    h = hummer(h)
 
-    if t > 18.3 and t < 36.8:
+    if t > 68 and t < 76:
         bg = (0, 100, 0)  # green
     else:
         bg = (100, 0, 0)  # red

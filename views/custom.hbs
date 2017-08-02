@@ -25,30 +25,39 @@
       <div class="collapse navbar-collapse" id ="myNavbar">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/">Weather</a></li>
-          <li><a href="/forecst">Outlook</a></li>
+          <li><a href="/raspberry">Raspberry PI</a></li>
           <li><a href="/local">PI Weather</a></li>
         </ul>
       </div>
     </div>
   </nav>
   <div class ="container-fluid bg-1 text-center">
-      <h1>PI WEATHER STATION</h1>
-      <ul>
-        {{#each results}} 
-        <li>
-          <h2>Klien, Texas</h2><p>Weather Station Home</p>
-          <h2>{{temp_h}}</h2><p>Temperature Humidity</p>
-          <h2>{{temp_p}}</h2><p>Temperature Pressure</p>
-          <h2>{{humidity}}</h2><p>Humidity Percentage</p>
-          <h2>{{pressure}}</h2><p>Barometric Pressure</p>
-          <h2>{{datetime}}</h2><p>Last Reading</p>
-        </li>
-        {{/each}}
-      </ul>
+    <h1>PI WEATHER DATA</h1>
+  <div class="container-fluid footer bg-3">
+      <div class="row">
+        <div class="col-sm-2"><strong>Temp H</strong></div>
+        <div class="col-sm-2"><strong>Temp P</strong></div>
+        <div class="col-sm-2"><strong>Humidity</strong></div>
+        <div class="col-sm-2"><strong>Pressure</strong></div>
+        <div class="col-sm-4"><strong>Date/Time</strong></div>
+      </div>
+      <div class="row">
+        <ul>
+          {{#each results}}
+           <li>
+            <div class="col-sm-2">{{temp_h}}</div>
+            <div class="col-sm-2">{{temp_p}}</div>
+            <div class="col-sm-2">{{humidity}}</div>
+            <div class="col-sm-2">{{pressure}}</div>
+            <div class="col-sm-4">{{datetime}}</div>
+          </li>
+         {{/each}}
+        </ul>
+      <div>
   </div>
   <div>
     <form method="GET" action="/custom">
-      <label>Record Pull</label>
+      <label>Number of records to view</label>
       <input name='custom', value='1'>
       <button type='submit' class="btn btn-default btn-sm">Request</button>
     </form>
