@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-  <head>
+ <head>
     <title>Have a Nice Day Weather</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,8 +8,10 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/static/style.css">
     <script src="/axios/axios.js"></script>
-  </head>
-  <body onload='lookup()'>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ </head>
+ <body>
     <!-- NAVIGATION -->
    <nav class="navbar navbar-default">
     <div class="container">
@@ -30,7 +32,175 @@
       </div>
     </div>
   </nav>
-  <h1>Hello World</h1>
-  </body>
+  <div class ="container-fluid bg-1 text-center">
+      <h1>Major City Outlook</h1>
+  </div>
+  <div class='container text-center'>
+   <div class='row'>
+    <div class='col-sm-3'>
+     <form method="get" action='/atlanta'>
+      <button type="submit" class="btn btn-default btn-md">Atlanta</button>
+     </form><br>
+    </div>
+    <div class='col-sm-3'>
+     <form method="get" action='/forecast'>
+      <button type="submit" class="btn btn-default btn-md">Baltimore</button>
+     </form><br>
+    </div>
+    <div class='col-sm-3'>
+     <form method="get" action='/forecast'>
+      <button type="submit" class="btn btn-default btn-md">Boston</button>
+     </form><br>
+    </div>
+    <div class='col-sm-3'>
+     <form method="get" action='/forecast'>
+      <button type="submit" class="btn btn-default btn-md">Charlotte</button>
+     </form><br>
+    </div>
+   </div>
+   <div class='row'>
+    <div class='col-sm-3'>
+     <form method="get" action='/forecast'>
+      <button type="submit" class="btn btn-default btn-md">Chicago</button>
+     </form><br>
+    </div>
+    <div class='col-sm-3'>
+     <form method="get" action='/forecast'>
+      <button type="submit" class="btn btn-default btn-md">Dallas</button>
+     </form><br>
+    </div>
+    <div class='col-sm-3'>
+      <form method="get" action='/forecast'>
+       <button type="submit" class="btn btn-default btn-md">Denver</button>
+      </form><br>
+    </div>
+     <div class='col-sm-3'>
+      <form method="get" action='/detroit'>
+       <button type="submit" class="btn btn-default btn-md">Detroit</button>
+      </form><br>
+     </div>
+   </div>
+   <div class='row'>
+    <div class='col-sm-3'>
+     <form method="get" action='/forecast'>
+      <button type="submit" class="btn btn-default btn-md">Houston</button>
+     </form><br>
+    </div>
+    <div class='col-sm-3'>
+     <form method="get" action='/forecast'>
+      <button type="submit" class="btn btn-default btn-md">Los Angeles</button>
+     </form><br>
+    </div>
+    <div class='col-sm-3'>
+     <form method="get" action='/forecast'>
+      <button type="submit" class="btn btn-default btn-md">Miami</button>
+     </form><br>
+    </div>
+    <div class='col-sm-3'>
+     <form method="get" action='/forecast'>
+      <button type="submit" class="btn btn-default btn-md">Minneapolis</button>
+     </form><br>
+    </div>
+   </div>
+   <div class='row'>
+     <div class='col-sm-3'>
+      <form method="get" action='/forecast'>
+       <button type="submit" class="btn btn-default btn-md">New York</button>
+      </form><br>
+     </div>
+     <div class='col-sm-3'>
+      <form method="get" action='/forecast'>
+       <button type="submit" class="btn btn-default btn-md">Orlando</button>
+      </form><br>
+    </div>
+    <div class='col-sm-3'>
+     <form method="get" action='/forecast'>
+      <button type="submit" class="btn btn-default btn-md">Philidelphia</button>
+     </form><br>
+    </div>
+     <div class='col-sm-3'>
+      <form method="get" action='/forecast'>
+       <button type="submit" class="btn btn-default btn-md">Phoenix</button>
+      </form><br>
+     </div>
+    </div>
+    <div class='row'>
+     <div class='col-sm-3'>
+      <form method="get" action='/forecast'>
+       <button type="submit" class="btn btn-default btn-md">Portland</button>
+      </form><br>
+     </div>
+     <div class='col-sm-3'>
+      <form method="get" action='/forecast'>
+       <button type="submit" class="btn btn-default btn-md">San Antonio</button>
+      </form><br>
+     </div>
+     <div class='col-sm-3'>
+      <form method="get" action='/forecast'>
+       <button type="submit" class="btn btn-default btn-md">San Diego</button>
+      </form><br>
+     </div>
+     <div class='col-sm-3'>
+      <form method="get" action='/forecast'>
+       <button type="submit" class="btn btn-default btn-md">San Francisco</button>
+      </form><br>
+     </div>
+   </div>
+   <div class='row'>
+    <div class='col-sm-3'>
+     <form method="get" action='/forecast'>
+      <button type="submit" class="btn btn-default btn-md">Seattle</button>
+     </form><br>
+    </div>
+    <div class='col-sm-3'>
+     <form method="get" action='/forecast'>
+      <button type="submit" class="btn btn-default btn-md">St Louis</button>
+     </form><br>
+    </div>
+    <div class='col-sm-3'>
+     <form method="get" action='/forecast'>
+      <button type="submit" class="btn btn-default btn-md">Tampa</button>
+     </form><br>
+    </div>
+    <div class='col-sm-3'>
+     <form method="get" action='/forecast'>
+      <button type="submit" class="btn btn-default btn-md">Washington DC</button>
+     </form><br>
+    </div>
+   </div>
+  </div>
+  <script>
+      function  lookup () {
+        var outlook = document.getElementById('outlook').value;
+        var skycons = new Skycons();
+        axios.get('/outlook', {params: {outlook: outlook}})
+       .then(function (response) {
+         console.log(response.data);
+         var tL = document.getElementById('tempL');
+         tL.innerHTML = round(response.data.ds.daily.data[0].temperatureMin, 1);
+         var tH = document.getElementById('tempH');
+         tH.innerHTML = round(response.data.ds.daily.data[0].temperatureMax, 1);
+         var s = document.getElementById('summary');
+         s.innerHTML = response.data.ds.daily.summary;
+         var r = document.getElementById('chncRain');
+         r.innerHTML = round(response.data.ds.daily.data[0].precipProbability * 100, 1);
+         var h = document.getElementById('humid');
+         h.innerHTML = round(response.data.ds.daily.data[0].humidity * 100, 1);
+         var d = document.getElementById('dew');
+         d.innerHTML = round(response.data.ds.daily.data[0].dewPoint, 1);
+         var u = document.getElementById('sunUp');
+         u.innerHTML = convertTime(response.data.ds.daily.data[0].sunriseTime);
+         var sD = document.getElementById('sunDown');
+         sD.innerHTML = convertTime(response.data.ds.daily.data[0].sunsetTime);
+         var l = document.getElementById('location');
+         l.innerHTML = response.data.db.location_text;
+         skycons.set("icon", response.data.ds.daily.icon);
+         skycons.play();
+         console.log(response.data.ds);
+       });
+        return false;
+      }
+    </script>
+ </body>
 </html>
   

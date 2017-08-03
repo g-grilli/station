@@ -25,6 +25,17 @@ app.get('/', function (request, response) {
 app.get('/forecast', function (request, response) {
 response.render('forecast.hbs', {});
 });
+app.get('/test', function (request, response) {
+response.render('test.hbs', {});
+});
+
+app.get('/atlanta', function (request, response) {
+response.render('atlanta.hbs', {});
+});
+
+app.get('/detroit', function (request, response) {
+ response.render('detroit.hbs', {});
+});
 
 app.get('/raspberry', function (request, response) {
  response.render('raspberry.hbs', {});
@@ -91,6 +102,9 @@ app.get('/custom', function (request, response, next) {
   })
      .catch(next);
  }); 
+ 
+ 
+ 
  
 var PORT = process.env.PORT || 80;
  app.listen(PORT, function () {

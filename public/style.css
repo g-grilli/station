@@ -37,6 +37,12 @@ li {
   color: #7fffd4;
   font-size: 14px;
 }
+
+img {
+  margin: 10px;
+  padding: 10px;
+  width: 95%;
+}
 /* VIDEO */
 .fullscreen-bg {
     position: fixed;
