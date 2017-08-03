@@ -92,7 +92,7 @@ app.get('/custom', function (request, response, next) {
      .catch(next);
  }); 
  
-var PORT = process.env.PORT || 8000;
+var PORT = process.env.PORT || 80;
  app.listen(PORT, function () {
    console.log('I am awakening... I feel awake... I am alive on PORT ' + PORT + '!');
 });

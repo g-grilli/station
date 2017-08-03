@@ -1,44 +1,72 @@
-body {
-  font: 300 112.5%/1.5em "Helvetica", "Arial", sans-serif;
-  margin: 3em 3em 6em;
-  padding: 0;
+/* NAVBAR */
+.navbar {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  letter-spacing: 5px
 }
 
-article {
-  margin: auto;
-  width: 30em;
+.navbar-nav li a:hover {
+  color: #1abc9c;
 }
 
-h1 {
-  font-size: 3em;
-  line-height: 1em;
-  text-align: center;
-  margin: 0.5em 0;
+
+ /* GENERAL */
+.container-fluid {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-p {
-  margin: 1.5em 0;
+body { 
+  font: 15px "Montserrat", sans-serif;
 }
 
-figure {
-  margin: 3em auto;
-  width: 368px;
-  height: 152px;
+li {
+  list-style: none;
+}
+      
+.footer li a {
+  color: #ffffff;
+  font-size: 12px;
+}
+      
+.footer li a:hover {
+  color: #7fffd4;
+  font-size: 14px;
+}
+/* VIDEO */
+.fullscreen-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
 }
 
-canvas {
-
+.fullscreen-bg__video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-transform: translate(-50%, -50%);
+       -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
 }
 
-pre {
-  font: 77.8%/1.5em "Lucida Sans Typewriter", "Lucida Console", "Monaco", "Bitstream Vera Sans Mono", monospace;
-  margin: 3.375em 1.6875em;
-      }
-
-a, pre span.comment {
-  color: royalblue;
-}
-
-a:visited, pre span.constant {
-  color: indianred;
-}
+/* @media (max-width: 767px) {
+    .fullscreen-bg {
+        background: url('http://dev2.slicejack.com/fullscreen-video-demo/img/videoframe.jpg') center center / cover no-repeat;
+    }
+    .fullscreen-bg__video {
+        display: none;
+    }
+}*/
