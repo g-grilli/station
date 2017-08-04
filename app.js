@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var session = require('express-session');
 var pgp = require('pg-promise')({
  promiseLib: Promise
 });
@@ -15,10 +16,7 @@ var axios = require('axios');
 
 app.set('view engine', 'hbs');
 app.use('/static', express.static('public'));
- 
 app.use('/axios', express.static('node_modules/axios/dist'));
-
-var session = require('express-session');
 app.use(session({
   secret: process.env.SECRET_KEY || 'dev',
   resave: true,

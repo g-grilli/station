@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/static/style.css">
+     <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <script src="https://use.fontawesome.com/02863f79d4.js"></script>
     <script src="/axios/axios.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -21,26 +22,23 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Have a Nice Day</a>
+        <a class="navbar-brand" href="#">HAVE A Nice Day</a>
       </div>
       <div class="collapse navbar-collapse" id ="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/">Weather</a></li>
-          <li><a href="/forecast">Outlook</a></li>
+          <li class='dropdown'><a class="drop-down-toggle" data-toggle="dropdown" href="#">
+            Weather<span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <li><a href='/'>Current</a></li>
+             <li><a href='/forecast'>Outlook</a></li>
+           </ul>
+          </li>
           <li><a href="/local">PI Station</a></li>
           <li><a href="/raspberry">Big Cities</a></li>
         </ul>
       </div>
     </div>
   </nav>
-  <!--VIDEO-->
- <!-- <div class="fullscreen-bg">
-    <video loop muted autoplay poster="static/rainbow-142701_1920.jpg" class="fullscreen-bg__video">
-        <source src="static/sunrise_-_1844.webm" type="video/webm">
-        <source src="static/sunrise_-_1844.mp4" type="video/mp4">
-        <source src="static/sunrise_-_1844.ogv" type="video/ogg">
-    </video>
- </div> -->
   <div class ="container-fluid bg-1 text-center">
     <h1 id="location"></h1>
     <h5>Today's Outlook</h5>
@@ -65,27 +63,20 @@
 
     <!--FOOTER-->
   <div class="container-fluid footer bg-3">
-    <div class ="row text-center">
-      <div class="col-sm-6">
-        
-      </div>
-      <div class="col-sm-6">
-        
-        
+      <div class="row">
+        <div class="col-sm-3">  
+          <ul>
+            <li>
+              <li>Contact</li>
+              <a href="https://github.com/g-grilli/station"><i class="fa fa-github" aria-hidden="true"></i></a>
+              <a href="https:/grilli.tech"><i class="fa fa-user" aria-hidden="true"></i></a>
+              <a href="https://linkedin.com/in/genegrilli"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+            </i>
+            <li><a href="https://darksky.net/poweredby/">DarkSky API</a></li>
+            <li><a href="http://www.grilli.tech"> Grilli Tech</a></li>
+          </ul>
+        </div>
     </div>
-  </div>
-    <div class="row">
-      <div class="col-sm-1"></div>  
-        <ul>
-          <li><strong>Contact</strong></li>
-          <li><a href="">Github</a></li>
-          <li><a href="">Email</a></li>
-          <li><a href="">LinkedIn</a></li>
-          <li><a href="https://darksky.net/poweredby/">Powerd by Dark Sky</a></li>
-          <li><a href='https/grilli.tech'>Grilli Tech Productions</a></li>
-        </ul>
-      </div>
-  </div>
     <script src='static/skycons.js'></script>
     <script>
       function  lookup () {
