@@ -20,6 +20,7 @@
     "apicache": "^0.8.7",
     "axios": "^0.16.2",
     "express": "^4.15.3",
+    "express-session": "^1.15.5",
     "hbs": "^4.0.1",
     "pg-promise": "^6.3.6"
   }

@@ -10,39 +10,36 @@ try:
 
 except: print("I am unable to connect to the databse")
 
-TEMP=True
-TEMP_H=True
-TEMP_P=True
-HUMIDITY=True
-PRESSURE=True
+temp_h=True
+temp_p=True
+hummidity=True
+pressure=True
 MAG=True
-DELAY=30 
+delay=1800
 
 def log_data(tempH, tempP, hum, press, mag, dt):
-    print(temp, tempH, tempP, hum, press, mag, dt)
+    print(tempH, tempP, hum, press, mag, dt)
     cur = conn.cursor()
     cur.execute("""INSERT INTO sensor_data(temp_h, temp_p, humidity, pressure, mag, datetime) 
-     VALUES (%s, %s, %s, %s, %s, %s, %s)""", (temp, tempH, tempP, hum, press, mag, dt ));
+     VALUES (%s, %s, %s, %s, %s, %s)""", (tempH, tempP, hum, press, mag, dt ));
     conn.commit()
     
 def get_sense_data():
     sense = SenseHat()
-    if TEMP
-      temp = sense.get_temperature()
     
-    if TEMP_H:
+    if temp_h:
         tempH = sense.get_temperature_from_humidity()
         
 
-    if TEMP_P:
+    if temp_p:
         tempP = sense.get_temperature_from_pressure()
         
 
-    if HUMIDITY:
+    if hummidity:
         hum = sense.get_humidity()
       
 
-    if PRESSURE:
+    if pressure:
         press = sense.get_pressure()
 
     if MAG:
@@ -54,11 +51,18 @@ def get_sense_data():
     
 def timed_log():
     while True:
+      datalist = get_sense_data()
       log_data(*datalist)
-      sleep(DELAY)
+      sleep(delay)
+
+def untimed_log():
+    while True:
+      datalist = get_sense_data()
+      log_data(*datalist)
+      sleep(1)
       
 def far(temp):
-  return round(((temp / 5 * 9) - 20) + 32, 1)
+  return round(((temp / 5 * 9) - 23) + 32, 1)
   
 def bar(pressure):
   return round((pressure * 0.02952998751),1)
@@ -67,13 +71,11 @@ def hummer(humidity):
   return round(humidity, 1)
 
 ##### Main Program #####
-sense=SenseHat()
-while True:
-    if DELAY > 0:
-      datalist = get_sense_data()
-      Thread(target = timed_log).start()
-    
-    if DELAY == 0:
-      datalist = get_sense_data()
-      log_data(*datalist)
+sense = SenseHat()
+
+if delay > 0:
+ Thread(target = timed_log).start()
+
+else:
+ Thread(target = untimed_log).start()
     

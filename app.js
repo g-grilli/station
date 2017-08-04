@@ -17,9 +17,17 @@ app.set('view engine', 'hbs');
 app.use('/static', express.static('public'));
  
 app.use('/axios', express.static('node_modules/axios/dist'));
+
+var session = require('express-session');
+app.use(session({
+  secret: process.env.SECRET_KEY || 'dev',
+  resave: true,
+  saveUninitialized: false,
+  cookie:{maxAge: null}
+}));
  
 app.get('/', function (request, response) {
- response.render('main.hbs', {});
+ response.render('main.hbs', {zip_code: request.session.zip_code || '77379'});
 });
 
 app.get('/forecast', function (request, response) {
@@ -40,6 +48,7 @@ app.get('/raspberry', function (request, response) {
  
 app.get('/api', cache('60 minutes'), function (request, response, next) {
  var zip_code = request.query.zip_code;
+ request.session.zip_code = zip_code;
  console.log('Generating new response', zip_code);
  var dbdata;
  db.any(`
