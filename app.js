@@ -29,12 +29,9 @@ app.get('/test', function (request, response) {
 response.render('test.hbs', {});
 });
 
-app.get('/atlanta', function (request, response) {
-response.render('atlanta.hbs', {});
-});
 
-app.get('/detroit', function (request, response) {
- response.render('detroit.hbs', {});
+app.get('/city', function (request, response) {
+ response.render('city.hbs', {query: request.query});
 });
 
 app.get('/raspberry', function (request, response) {
