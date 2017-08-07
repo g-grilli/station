@@ -112,7 +112,7 @@
          var tH = document.getElementById('tempH');
          tH.innerHTML = round(response.data.ds.daily.data[0].temperatureMax, 1);
          var s = document.getElementById('summary');
-         s.innerHTML = response.data.ds.daily.summary;
+         s.innerHTML = response.data.ds.daily.data[0].summary;
          var r = document.getElementById('chncRain');
          r.innerHTML = round(response.data.ds.daily.data[0].precipProbability * 100, 1);
          var h = document.getElementById('humid');
