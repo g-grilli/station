@@ -6,26 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-     <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
     <script src="https://use.fontawesome.com/02863f79d4.js"></script>
     <script src="/axios/axios.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="apple-touch-icon" sizes="57x57" href="/static/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/statc/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/statc/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/statc/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/statc/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/statc/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/statc/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/statc/apple-icon-180x180.png">
+    <link rel="icon" href="/static/favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/statc/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/statc/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/statc/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/statc/favicon-16x16.png">
+    <link rel="manifest" href="/statc/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/statc/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
   </head>
   <body onload='lookup()'>
     <!-- NAVIGATION -->
    <nav class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">Have a Nice Day</a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Have A Nice Day</a>
       </div>
       <div class="collapse navbar-collapse" id ="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown"><a class="drop-down-toggle" data-toggle="dropdown" href="#">
+          <li class='dropdown'><a class="drop-down-toggle" data-toggle="dropdown" href="#">
             Weather<span class="caret"></span></a>
            <ul class="dropdown-menu">
              <li><a href='/'>Current</a></li>
-             <li><a href='/forecast'>Outlook</a></li>
+             <li><a href='/forecast'>Outlook Today</a></li>
+             <li><a href='/sevenday'>Week Ahead</a></li>
            </ul>
           </li>
           <li><a href="/local">PI Station</a></li>
@@ -91,7 +115,7 @@
      <h4 id="sunDown3"></h4><p>Sunset</p>
     </div>
    </div>
-   <div class='col-sm-2 text-center'>
+   <div class='col-sm-2'>
      <h4 id="time4"></h4><p>Date</p>
      <h4><canvas id="icons4" width='32' height='32'></canvas></h4>
      <h4 id="summ4"></h4><p>Outlook</p>
@@ -115,7 +139,7 @@
      <h4 id="sunUp5"></h4><p>Sunrise</p>
      <h4 id="sunDown5"></h4><p>Sunset</p><br>
      </div>
-     <div container-fluid bg-2 text-center>
+     <div class='container-fluid bg-2 text-center'>
      <form method="get" action='/'>
      <button type="submit" class="btn btn-default btn-sm">Current Weather</button>
     </form><br>

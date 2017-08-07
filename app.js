@@ -8,6 +8,8 @@ var db = pgp({
  database: 'zipcode',
  user: 'postgres'
 });
+var Chart = require('chart.js');
+
  
 var apicache = require('apicache');
 var cache = apicache.middleware;
@@ -17,6 +19,7 @@ var axios = require('axios');
 app.set('view engine', 'hbs');
 app.use('/static', express.static('public'));
 app.use('/axios', express.static('node_modules/axios/dist'));
+app.use('/chart.js', express.static('node_modules/chart.js/dist'));
 app.use(session({
   secret: process.env.SECRET_KEY || 'dev',
   resave: true,
