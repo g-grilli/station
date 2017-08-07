@@ -1,0 +1,346 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Have a Nice Day Weather</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <script src="https://use.fontawesome.com/02863f79d4.js"></script>
+    <script src="/axios/axios.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body onload='lookup()'>
+    <!-- NAVIGATION -->
+   <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Have a Nice Day</a>
+      </div>
+      <div class="collapse navbar-collapse" id ="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown"><a class="drop-down-toggle" data-toggle="dropdown" href="#">
+            Weather<span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <li><a href='/'>Current</a></li>
+             <li><a href='/forecast'>Outlook</a></li>
+           </ul>
+          </li>
+          <li><a href="/local">PI Station</a></li>
+          <li><a href="/raspberry">Big Cities</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+ <div class ="container-fluid bg-1 text-center">
+  <h1 id="location"></h1>
+  <h5>Weather Outlook</h5>
+  <h4><canvas id="icon" width='48' height='48'></canvas></h4>
+  <h4 id="summary"></h4><p>Weather Outlook Summary</p></p>
+  <div clas='container'>
+   <div clss='row'>
+    <div class='col-sm-2'>
+     <h4 id="time"></strong></h4><p>Date</p>
+     <h4><canvas id="icons" width='32' height='32'></canvas></h4>
+     <h4 id="summ"></h4><p>Outlook</p>
+     <h4 id="tempL"></h4><p>Low Temp</p>
+     <h4 id="tempH"></h4><p>High Temp</p>
+     <h4 id="chncRain"></h4><p>Chance Rain</p>
+     <h4 id="humid"></h4><p>Humidity</p>
+     <h4 id="dew"></h4><p>Dewpoint</p>
+     <h4 id="sunUp"></h4><p>Sunrise</p>
+     <h4 id="sunDown"></h4><p>Sunset</p>
+    </div>
+   </div>
+   <div class='col-sm-2 text-center'>
+     <h4 id="time1"></h4><p>Date</p>
+     <h4><canvas id="icons1" width='32' height='32'></canvas></h4>
+     <h4 id="summ1"></h4><p>Outlook</p>
+     <h4 id="tempL1"></h4><p>Low Temp</p>
+     <h4 id="tempH1"></h4><p>High Temp</p>
+     <h4 id="chncRain1"></h4><p>Chance Rain</p>
+     <h4 id="humid1"></h4><p>Humidity</p>
+     <h4 id="dew1"></h4><p>Dewpoint</p>
+     <h4 id="sunUp1"></h4><p>Sunrise</p>
+     <h4 id="sunDown1"></h4><p>Sunset</p>
+    </div>
+    <div class='col-sm-2'>
+      <h4 id="time2"></h4><p>Date</p>
+      <h4><canvas id="icons2" width='32' height='32'></canvas></h4>
+      <h4 id="summ2"></h4><p>Outlook</p>
+     <h4 id="tempL2"></h4><p>Low Temp</p>
+     <h4 id="tempH2"></h4><p>High Temp</p>
+     <h4 id="chncRain2"></h4><p>Chance Rain</p>
+     <h4 id="humid2"></h4><p>Humidity</p>
+     <h4 id="dew2"></h4><p>Dewpoint</p>
+     <h4 id="sunUp2"></h4><p>Sunrise</p>
+     <h4 id="sunDown2"></h4><p>Sunset</p>
+    </div>
+    <div class='col-sm-2'>
+     <h4 id="time3"></h4><p>Date</p>
+     <h4><canvas id="icons3" width='32' height='32'></canvas></h4>
+     <h4 id="summ3"></h4><p>Outlook</p>
+     <h4 id="tempL3"></h4><p>Low Temp</p>
+     <h4 id="tempH3"></h4><p>High Temp</p>
+     <h4 id="chncRain3"></h4><p>Chance Rain</p>
+     <h4 id="humid3"></h4><p>Humidity</p>
+     <h4 id="dew3"></h4><p>Dewpoint</p>
+     <h4 id="sunUp3"></h4><p>Sunrise</p>
+     <h4 id="sunDown3"></h4><p>Sunset</p>
+    </div>
+   </div>
+   <div class='col-sm-2 text-center'>
+     <h4 id="time4"></h4><p>Date</p>
+     <h4><canvas id="icons4" width='32' height='32'></canvas></h4>
+     <h4 id="summ4"></h4><p>Outlook</p>
+     <h4 id="tempL4"></h4><p>Low Temp</p>
+     <h4 id="tempH4"></h4><p>High Temp</p>
+     <h4 id="chncRain4"></h4><p>Chance Rain</p>
+     <h4 id="humid4"></h4><p>Humidity</p>
+     <h4 id="dew4"></h4><p>Dewpoint</p>
+     <h4 id="sunUp4"></h4><p>Sunrise</p>
+     <h4 id="sunDown4"></h4><p>Sunset</p>
+    </div>
+    <div class='col-sm-2'>
+     <h4 id="time5"></h4><p>Date</p>
+     <h4><canvas id="icons5" width='32' height='32'></canvas></h4>
+     <h4 id="summ5"></h4><p>Outlook</p>
+     <h4 id="tempL5"></h4><p>Low Temp</p>
+     <h4 id="tempH5"></h4><p>High Temp</p>
+     <h4 id="chncRain5"></h4><p>Chance Rain</p>
+     <h4 id="humid5"></h4><p>Humidity</p>
+     <h4 id="dew5"></h4><p>Dewpoint</p>
+     <h4 id="sunUp5"></h4><p>Sunrise</p>
+     <h4 id="sunDown5"></h4><p>Sunset</p><br>
+     </div>
+     <div container-fluid bg-2 text-center>
+     <form method="get" action='/'>
+     <button type="submit" class="btn btn-default btn-sm">Current Weather</button>
+    </form><br>
+    <form method="get" action='/forecast'>
+     <button type="submit" class="btn btn-default btn-sm">Today's Outlook</button>
+    </form><br>
+    <form action="/" class="zipcode" onsubmit="return lookup()">
+      <label>Change Location Zip Code</label><br>
+      <input type="text" name="zip_code" id="zip_code" value="{{zip_code}}" size='10'>
+      <button type="submit" class="btn btn-default btn-sm">Submit</button>
+    </form>
+    </div>
+   </div>
+  </div>
+
+    <!--FOOTER-->
+  <div class="container-fluid footer bg-3">
+      <div class="row">
+        <div class="col-sm-3">  
+          <ul>
+            <li>
+              <li>Contact</li>
+              <a href="https://github.com/g-grilli/station"><i class="fa fa-github" aria-hidden="true"></i></a>
+              <a href="https:/grilli.tech"><i class="fa fa-user" aria-hidden="true"></i></a>
+              <a href="https://linkedin.com/in/genegrilli"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+            </i>
+            <li><a href="https://darksky.net/poweredby/">DarkSky API</a></li>
+            <li><a href="http://www.grilli.tech"> Grilli Tech</a></li>
+          </ul>
+        </div>
+    </div>
+    <script src='/static/skycons.js'></script>
+    <script>
+      function  lookup () {
+        var zip_code = document.getElementById('zip_code').value;
+        var skycons = new Skycons();
+        axios.get('/api', {params: {zip_code: zip_code}})
+       .then(function (response) {
+         console.log(response.data);
+         var t = document.getElementById('time');
+         t.innerHTML = convertDate(response.data.ds.daily.data[1].time);
+         skycons.set("icons", response.data.ds.daily.data[1].icon);
+         skycons.play();
+         var o = document.getElementById('summ');
+         o.innerHTML = response.data.ds.daily.data[1].summary;
+         var tL = document.getElementById('tempL');
+         tL.innerHTML = round(response.data.ds.daily.data[1].temperatureMin, 1);
+         var tH = document.getElementById('tempH');
+         tH.innerHTML = round(response.data.ds.daily.data[1].temperatureMax, 1);
+         var s = document.getElementById('summary');
+         s.innerHTML = response.data.ds.daily.summary;
+         var r = document.getElementById('chncRain');
+         r.innerHTML = round(response.data.ds.daily.data[1].precipProbability * 100, 1);
+         var h = document.getElementById('humid');
+         h.innerHTML = round(response.data.ds.daily.data[1].humidity * 100, 1);
+         var d = document.getElementById('dew');
+         d.innerHTML = round(response.data.ds.daily.data[1].dewPoint, 1);
+         var u = document.getElementById('sunUp');
+         u.innerHTML = convertTime(response.data.ds.daily.data[1].sunriseTime);
+         var sD = document.getElementById('sunDown');
+         sD.innerHTML = convertTime(response.data.ds.daily.data[1].sunsetTime);
+         var l = document.getElementById('location');
+         l.innerHTML = response.data.db.location_text;
+         skycons.set("icon", response.data.ds.daily.icon);
+         skycons.play();
+         var t1 = document.getElementById('time1');
+         t1.innerHTML = convertDate(response.data.ds.daily.data[2].time);
+         skycons.set("icons1", response.data.ds.daily.data[2].icon);
+         skycons.play();
+         var o1 = document.getElementById('summ1');
+         o1.innerHTML = response.data.ds.daily.data[2].summary;
+         var tL1 = document.getElementById('tempL1');
+         tL1.innerHTML = round(response.data.ds.daily.data[2].temperatureMin, 1);
+         var tH1 = document.getElementById('tempH1');
+         tH1.innerHTML = round(response.data.ds.daily.data[2].temperatureMax, 1);
+         var r1 = document.getElementById('chncRain1');
+         r1.innerHTML = round(response.data.ds.daily.data[2].precipProbability * 100, 1);
+         var h1 = document.getElementById('humid1');
+         h1.innerHTML = round(response.data.ds.daily.data[2].humidity * 100, 1);
+         var d1 = document.getElementById('dew1');
+         d1.innerHTML = round(response.data.ds.daily.data[2].dewPoint, 1);
+         var u1 = document.getElementById('sunUp1');
+         u1.innerHTML = convertTime(response.data.ds.daily.data[2].sunriseTime);
+         var sD1 = document.getElementById('sunDown1');
+         sD1.innerHTML = convertTime(response.data.ds.daily.data[2].sunsetTime);
+         var t2 = document.getElementById('time2');
+         t2.innerHTML = convertDate(response.data.ds.daily.data[3].time);
+         skycons.set("icons2", response.data.ds.daily.data[3].icon);
+         skycons.play();
+         var o2 = document.getElementById('summ2');
+         o2.innerHTML = response.data.ds.daily.data[3].summary;
+         var tL2 = document.getElementById('tempL2');
+         tL2.innerHTML = round(response.data.ds.daily.data[3].temperatureMin, 1);
+         var tH2 = document.getElementById('tempH2');
+         tH2.innerHTML = round(response.data.ds.daily.data[3].temperatureMax, 1);
+         var r2 = document.getElementById('chncRain2');
+         r2.innerHTML = round(response.data.ds.daily.data[3].precipProbability * 100, 1);
+         var h2 = document.getElementById('humid2');
+         h2.innerHTML = round(response.data.ds.daily.data[3].humidity * 100, 1);
+         var d2 = document.getElementById('dew2');
+         d2.innerHTML = round(response.data.ds.daily.data[3].dewPoint, 1);
+         var u2 = document.getElementById('sunUp2');
+         u2.innerHTML = convertTime(response.data.ds.daily.data[3].sunriseTime);
+         var sD2= document.getElementById('sunDown2');
+         sD2.innerHTML = convertTime(response.data.ds.daily.data[3].sunsetTime);
+         var t3 = document.getElementById('time3');
+         t3.innerHTML = convertDate(response.data.ds.daily.data[4].time);
+         skycons.set("icons3", response.data.ds.daily.data[4].icon);
+         skycons.play();
+         var o3 = document.getElementById('summ3');
+         o3.innerHTML = response.data.ds.daily.data[4].summary;
+         var tL3 = document.getElementById('tempL3');
+         tL3.innerHTML = round(response.data.ds.daily.data[4].temperatureMin, 1);
+         var tH3 = document.getElementById('tempH3');
+         tH3.innerHTML = round(response.data.ds.daily.data[4].temperatureMax, 1);
+         var r3 = document.getElementById('chncRain3');
+         r3.innerHTML = round(response.data.ds.daily.data[4].precipProbability * 100, 1);
+         var h3 = document.getElementById('humid3');
+         h3.innerHTML = round(response.data.ds.daily.data[4].humidity * 100, 1);
+         var d3 = document.getElementById('dew3');
+         d3.innerHTML = round(response.data.ds.daily.data[4].dewPoint, 1);
+         var u3 = document.getElementById('sunUp3');
+         u3.innerHTML = convertTime(response.data.ds.daily.data[4].sunriseTime);
+         var sD3 = document.getElementById('sunDown3');
+         sD3.innerHTML = convertTime(response.data.ds.daily.data[4].sunsetTime);
+         var t4 = document.getElementById('time4');
+         t4.innerHTML = convertDate(response.data.ds.daily.data[5].time);
+         skycons.set("icons4", response.data.ds.daily.data[5].icon);
+         skycons.play();
+         var tL4 = document.getElementById('tempL4');
+         var o4 = document.getElementById('summ4');
+         o4.innerHTML = response.data.ds.daily.data[5].summary;
+         tL4.innerHTML = round(response.data.ds.daily.data[5].temperatureMin, 1);
+         var tH4 = document.getElementById('tempH4');
+         tH1.innerHTML = round(response.data.ds.daily.data[5].temperatureMax, 1);
+         var r4 = document.getElementById('chncRain4');
+         r4.innerHTML = round(response.data.ds.daily.data[5].precipProbability * 100, 1);
+         var h4 = document.getElementById('humid4');
+         h4.innerHTML = round(response.data.ds.daily.data[5].humidity * 100, 1);
+         var d4 = document.getElementById('dew4');
+         d4.innerHTML = round(response.data.ds.daily.data[5].dewPoint, 1);
+         var u4 = document.getElementById('sunUp4');
+         u4.innerHTML = convertTime(response.data.ds.daily.data[5].sunriseTime);
+         var sD4 = document.getElementById('sunDown4');
+         sD4.innerHTML = convertTime(response.data.ds.daily.data[5].sunsetTime);
+         var t5 = document.getElementById('time5');
+         t5.innerHTML = convertDate(response.data.ds.daily.data[6].time);
+         skycons.set("icons5", response.data.ds.daily.data[6].icon);
+         skycons.play();
+         var o5 = document.getElementById('summ5');
+         o5.innerHTML = response.data.ds.daily.data[6].summary;
+         var tL5 = document.getElementById('tempL5');
+         tL5.innerHTML = round(response.data.ds.daily.data[6].temperatureMin, 1);
+         var tH5 = document.getElementById('tempH5');
+         tH5.innerHTML = round(response.data.ds.daily.data[6].temperatureMax, 1);
+         var r5 = document.getElementById('chncRain5');
+         r5.innerHTML = round(response.data.ds.daily.data[6].precipProbability * 100, 1);
+         var h5 = document.getElementById('humid5');
+         h5.innerHTML = round(response.data.ds.daily.data[6].humidity * 100, 1);
+         var d5 = document.getElementById('dew5');
+         d5.innerHTML = round(response.data.ds.daily.data[6].dewPoint, 1);
+         var u5 = document.getElementById('sunUp5');
+         u5.innerHTML = convertTime(response.data.ds.daily.data[6].sunriseTime);
+         var sD5= document.getElementById('sunDown5');
+         sD5.innerHTML = convertTime(response.data.ds.daily.data[6].sunsetTime);
+         
+         
+         console.log(response.data.ds);
+       });
+        return false;
+      }
+    </script>
+    <script>
+     function round(value, precision) {
+      var multiplier = Math.pow(10, precision || 0);
+      return Math.round(value * multiplier) / multiplier;
+      }
+    </script>
+    <script>
+      function convertTime(timestamp) {
+        var d = new Date(timestamp * 1000),
+		      yyyy = d.getFullYear(),
+		      mm = ('0' + (d.getMonth() + 1)).slice(-2),	
+		      dd = ('0' + d.getDate()).slice(-2),
+		      hh = d.getHours(),
+		      h = hh,
+		      min = ('0' + d.getMinutes()).slice(-2),
+		      ampm = 'AM',
+		      time;
+	      if (hh > 12) {
+		      h = hh - 12;
+		      ampm = 'PM';
+	      } else if (hh === 12) {
+		      h = 12;
+		      ampm = 'PM';
+	      } else if (hh == 0) {
+		    h = 12;
+	      }
+	      time = h + ':' + min + ' ' + ampm;
+	      return time;
+      }
+    </script>
+    <script>
+      function convertDate(timestamp) {
+        var d = new Date(timestamp * 1000),
+		      yyyy = d.getFullYear(),
+		      mm = ('0' + (d.getMonth() + 1)).slice(-2),	
+		      dd = ('0' + d.getDate()).slice(-2),
+		      hh = d.getHours(),
+		      h = hh,
+		      min = ('0' + d.getMinutes()).slice(-2),
+		      ampm = 'AM',
+		      time;
+	      if (hh > 12) {
+		      h = hh - 12;
+		      ampm = 'PM';
+	      } else if (hh === 12) {
+		      h = 12;
+		      ampm = 'PM';
+	      } else if (hh == 0) {
+		    h = 12;
+	      }
+	      date = mm + '/' + dd + '/' + yyyy;
+	      return date;
+      }
+    </script>
+  </body>
+</html>

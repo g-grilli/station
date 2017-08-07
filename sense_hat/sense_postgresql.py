@@ -15,7 +15,7 @@ temp_p=True
 hummidity=True
 pressure=True
 MAG=True
-delay=1800
+delay=900
 
 def log_data(tempH, tempP, hum, press, mag, dt):
     print(tempH, tempP, hum, press, mag, dt)

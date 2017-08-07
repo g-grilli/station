@@ -29,12 +29,12 @@ app.get('/', function (request, response) {
 });
 
 app.get('/forecast', function (request, response) {
-response.render('forecast.hbs', {});
-});
-app.get('/test', function (request, response) {
-response.render('test.hbs', {});
+response.render('forecast.hbs', {zip_code: request.session.zip_code || '77379'});
 });
 
+app.get('/sevenday', function (request, response) {
+response.render('sevenday.hbs', {zip_code: request.session.zip_code || '77379'});
+});
 
 app.get('/city', function (request, response) {
  response.render('city.hbs', {query: request.query});
