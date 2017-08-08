@@ -2,11 +2,11 @@
 .navbar {
   padding-top: 15px;
   padding-bottom: 15px;
-  border: 0;
+  border-bottom: solid rgb(211,25,25) 3px;
   border-radius: 0;
   margin-bottom: 0;
   font-size: 12px;
-  letter-spacing: 5px
+  letter-spacing: 5px;
 }
 
 .navbar-nav li a:hover {
@@ -19,7 +19,8 @@
   padding-bottom: 20px;
 }
 
-body { 
+body {
+  padding-top: 70px;
   font: 15px "Montserrat", sans-serif;
 }
 
@@ -61,7 +62,17 @@ img {
 #time, #time1, #time2, #time3,#time4,#time5 {
   font-wieght: bold;
   font-size: 1.2em;
-  border-top: thick double #888888;
+  border-top: thick double rgb(211,25,25);
   padding-top: 10px;
   margin-top: 10px;
+}
+@media screen and (max-width: 760px) {
+    .bg-4 {
+        display: none;
+    }
+}
+@media screen and (min-width: 760px) {
+    .bg-5 {
+        display: none;
+    }
 }

@@ -104,7 +104,19 @@ app.get('/custom', function (request, response, next) {
   SELECT temp_h, temp_p, humidity, pressure, datetime FROM sensor_data
   ORDER BY datetime DESC LIMIT $1`, custom)
   .then(function(results) {
-    response.render('custom.hbs', {results: results})
+    var data = [];
+    var dataTP = [];
+    var dataH = [];
+    var dataP = [];
+    var dataD =[];
+    results.forEach(function (r) {
+      data.push(r.temp_h);
+      dataTP.push(r.temp_p);
+      dataH.push(r.humidity);
+      dataP.push(r.pressure);
+      
+    });
+    response.render('custom.hbs', {results: results, data: JSON.stringify(data),dataTP: JSON.stringify(dataTP),dataH: JSON.stringify(dataH), dataP: JSON.stringify(dataP), dataD: JSON.stringify(dataD)})
      
   })
      .catch(next);

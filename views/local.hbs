@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/static/style.css">
     <script src="https://use.fontawesome.com/02863f79d4.js"></script>
     <script src="/axios/axios.js"></script>
+    <script src="/chart.js/Chart.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="apple-touch-icon" sizes="57x57" href="/static/apple-icon-57x57.png">
@@ -30,8 +31,9 @@
     <meta name="msapplication-TileImage" content="/statc/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
   </head>
+  <body onload='chartData()'>
     <!-- NAVIGATION -->
-   <nav class="navbar navbar-default">
+   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -72,9 +74,14 @@
         {{/each}}
       </ul>
       <p>Data for this page is generated from sensors attached to a Raspberry PI.</p>
+     </div>
+     <div>
+    <canvas id="piWeather" width="400" height="400"></canvas>
+  </div>
+  <div class ="container-fluid bg-2 text-center">
     <form method="GET" action="/custom">
       <label>Record Pull</label>
-      <input name='custom', value='1' size="5">
+      <input name='custom', value='10' size="5">
       <button type='submit'  class="btn btn-default btn-sm">Request</button>
     </form>
   </div>
@@ -92,6 +99,38 @@
             <li><a href="http://www.grilli.tech"> Grilli Tech</a></li>
           </ul>
         </div>
-    </div>
-  </body>
+   </div>
+   <script>
+   function chartData() {
+    var ctx = document.getElementById("piWeather").getContext('2d');
+    var piWeather = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Temp-H °F', 'Temp-P °F', 'Humidity %', 'Press inHG'],
+        datasets: [{
+            label: 'Weather Sation Readings',
+            {{#each results}}
+            data: [{{temp_h}}, {{temp_p}}, {{humidity}},{{pressure}}] ,
+            {{/each}}
+            backgroundColor:
+                'rgba(248, 248, 248, 1)',
+            borderColor:
+                'rgba(211,25,25,1)',
+            borderWidth: 3
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+      }
+    });
+   }
+
+   </script>
+ </body>
 </html>  
