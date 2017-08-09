@@ -12,7 +12,8 @@ pressure sensor readings.  The second table stores a US Census zip code data bas
 and latitude coordinates for each zipcode in the United States</p>
 <p>Using JavaScript on the front end, sensor data and geo cordinates can be accessed and displayed.  
 The <a href="http://darksky.net">Dark Sky</a> weather API was added to provide US weather information independant 
-of the local data.  Using the PostgreSQL zip code information cordinates are requested from the Dark Sky API</p>
+of the local data.  Using the PostgreSQL zip code information cordinates are requested from the Dark Sky API. Zip Code weather 
+can be changed through a user input that stores a cookie locally.</p>
 <p>Local measurments are converted to JSON stringify format so the readings can displayed using Chart.js to see trends and history,
 as well as the data in a table format.<p>
 <p><strong>Weather Station</strong> is a multipage web app that reinforced the skills I learned while attending
@@ -29,6 +30,7 @@ locally behind a firewall through a <a href="https://dataplicity.com>Dataplicity
 <li>PostgreSQL</li>
 <li>JavaScript</>
 <li>Express</li>
+<li>Express-Session</li>
 <li>HTML</li>
 <li>CSS</li>
 <li>Apicache</li>
