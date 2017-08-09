@@ -23,7 +23,7 @@ while True:
     if t > 68 and t < 76:
         bg = (0, 100, 0)  # green
     else:
-        bg = (100, 0, 0)  # red
+        bg = (0, 0, 100)  # blue
 
     msg = "Grilli.Tech is Awesome!  Current Conditions: Temperature = {0}, Pressure = {1}, Humidity - {2}".format(t, p, h)
     sense.set_rotation(180)

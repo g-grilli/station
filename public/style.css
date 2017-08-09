@@ -39,16 +39,16 @@ li {
 
 .footer li a {
   color: black;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .footer li a i{
   color: black;
-  font-size: 20px;
-}
-.footer li a:hover i{
-  color: #00008b;
   font-size: 24px;
+}
+.footer li i a:hover {
+  color: #00008b;
+  font-size: 32px;
 }
 
 .footer li a:hover {

@@ -116,7 +116,7 @@ app.get('/custom', function (request, response, next) {
       dataP.push(r.pressure);
       
     });
-    response.render('custom.hbs', {results: results, data: JSON.stringify(data),dataTP: JSON.stringify(dataTP),dataH: JSON.stringify(dataH), dataP: JSON.stringify(dataP), dataD: JSON.stringify(dataD)})
+    response.render('custom.hbs', {results: results, data: JSON.stringify(data),dataTP: JSON.stringify(dataTP),dataH: JSON.stringify(dataH), dataP: JSON.stringify(dataP), dataD: JSON.stringify(dataD)});
      
   })
      .catch(next);
