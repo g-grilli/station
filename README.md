@@ -20,7 +20,7 @@ as well as the data in a table format.<p>
 <p><strong>Weather Station</strong> is a multipage web app that reinforced the skills I learned while attending
 <a href="http://digitalcrafts.com">DigitalCrafts</a> coding boot camp.<p>
 <p><strong>Weather Station</strong> application takes advantage of the Raspberry PI hardware to host the web application 
-locally behind a firewall through a <a href="https://dataplicity.com>">Dataplicity</a> connection utilizing Bind that monitors the local host.<p>
+locally behind a firewall through a <a href="https://www.dataplicity.com>">Dataplicity</a> connection utilizing Bind that monitors the local host.<p>
 
 
 <h3>Tools</h3>
