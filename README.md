@@ -13,11 +13,12 @@ and latitude coordinates for each zipcode in the United States</p>
 <p>Using JavaScript on the front end, sensor data and geo cordinates can be accessed and displayed.  
 The <a href="http://darksky.net">Dark Sky</a> weather API was added to provide US weather information independant 
 of the local data.  Using the PostgreSQL zip code information cordinates are requested from the Dark Sky API</p>
-<p>Local measurments can displayed using Chart.js to see trends and history.<p>
-<p><strong>Weather Station</strong> is a multipage progressive web app that reinforced the skills I learned while attending
+<p>Local measurments are converted to JSON stringify format so the readings can displayed using Chart.js to see trends and history,
+as well as the data in a table format.<p>
+<p><strong>Weather Station</strong> is a multipage web app that reinforced the skills I learned while attending
 <a href="http://digitalcrafts.com">DigitalCrafts</a> coding boot camp.<p>
 <p><strong>Weather Station</strong> application takes advantage of the Raspberry PI to host the web application 
-locally behind a firewall through a <a href="https://dataplicity.com>Dataplicity"></a> connection monitoring the local host.<p>
+locally behind a firewall through a <a href="https://dataplicity.com>Dataplicity"></a> connection utilizing Bind that monitors the local host.<p>
 
 
 <h3>Tools</h3>
