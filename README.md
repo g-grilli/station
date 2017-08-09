@@ -10,12 +10,12 @@ temperature, humidity and barometric sensor module.
 pressure sensor readings.  The second table stores a US Census zip code data base with longitude 
 and latitude coordinates for each zipcode in the United States</p>
 <p>Using JavaScript on the front end, sensor data and geo cordinates can be accessed and displayed.  
-The <a href="://darksky.net">Dark Sky</a> weather API was added to provide US weather information independant 
+The <a href="http://darksky.net">Dark Sky</a> weather API was added to provide US weather information independant 
 of the local data.  Using the PostgreSQL zip code information cordinates are requested from the Dark Sky API</p>
 <p><strong>Weather Station</strong> is a multipage progressive web app that reinforced the skills I learned while attending
-<a href="digitalcrafts.com">DigitalCrafts</a><p>
+<a href="http://digitalcrafts.com">DigitalCrafts coding boot camp.</a><p>
 <p><strong>Weather Station</strong> application takes advantage of the Raspberry PI to host the web application 
-locally behind a firewall through a <a href="https://dataplicity.com>Dataplicity"</a> connection monitoring the local host.<p>
+locally behind a firewall through a <a href="https://dataplicity.com>Dataplicity"></a> connection monitoring the local host.<p>
 
 
 <h3>Tools</h3>
