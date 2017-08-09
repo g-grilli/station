@@ -3,9 +3,10 @@
 <p>This ia a local weather station application that integrates a Raspberry PI with a 
 temperature, humidity and barometric sensor module.
 <h3>How it works</h3>
-</p><p>The sensor suite is interfaced with Python to monitor the sensors and control the 
-8x8 RGB LED matrix display. Python gets a reading every 15 minutes and stores the data in a PostgreSQL database, while displaying 
-live temperature, humidity and barometric pressure on the LED.
+</p><p>The sensor suite is interfaced with Python to monitor the sensors and control a 
+8x8 RGB LED matrix display. Python gets a reading every 15 minutes, converts the data from 
+Celsius to Fahrenheit, and then records the data in a PostgreSQL database. Through the LED 
+display, live temperature, humidity and barometric pressure are continually dispalyed.
 </p>
 <p>The Postgres database has two tables, one for storing the temperature, humidity and 
 pressure sensor readings.  The second table stores a US Census zip code data base with longitude 
@@ -33,6 +34,7 @@ locally behind a firewall through a <a href="https://dataplicity.com>Dataplicity
 <li>Express-Session</li>
 <li>HTML</li>
 <li>CSS</li>
+<li>Bootstrap</li>
 <li>Apicache</li>
 <li>Axios</li>
 <li>Chart.js</li>
