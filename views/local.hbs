@@ -75,6 +75,13 @@
       </ul>
       <p>Data for this page is generated from sensors attached to a Raspberry PI.</p>
      </div>
+     <div class ="container-fluid bg-2 text-center">
+    <form method="GET" action="/custom">
+      <label>Record Pull</label>
+      <input name='custom', value='10' size="5">
+      <button type='submit'  class="btn btn-default btn-sm">Request</button>
+    </form>
+  </div>
      <div>
     <canvas id="piWeather" width="400" height="400"></canvas>
   </div>
