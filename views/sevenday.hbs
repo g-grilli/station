@@ -272,6 +272,7 @@
          var tL4 = document.getElementById('tempL4');
          var o4 = document.getElementById('summ4');
          o4.innerHTML = response.data.ds.daily.data[5].summary;
+         var tL4 = document.getElementById('tempL4');
          tL4.innerHTML = round(response.data.ds.daily.data[5].temperatureMin, 1);
          var tH4 = document.getElementById('tempH4');
          tH1.innerHTML = round(response.data.ds.daily.data[5].temperatureMax, 1);
